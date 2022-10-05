@@ -7,8 +7,12 @@ module alarm_clock_top(
     input moveRight_BTN, moveLeft_BTN, increment_BTN, decrement_BTN,
     output outsignal_counter, outsignal_time,
 
-    output audioOut, aud_sd,
-    
+//    output audioOut, aud_sd,
+    /*
+        G2 use led to replace the aud
+    */
+    output  alarm_led,
+
     output  hsync,
     output  vsync,
     output  [3:0]   VGA_R,
@@ -211,6 +215,13 @@ clock_pll PLL(
         .set_status(set_status)  //  检测是否是 set 阶段的输出 高电平有效
     );
 
+    /******************************************************
+          指示灯部分
+    ********************************************************/
+    
+    check_alarm check_alarm_module(minutes_ones, load_minutes_ones, minutes_tens, load_minutes_tens, load_SW, alarm_off_SW, play_sound);
+
+    assign alarm_led=(play_sound==1)?1'b1:1'b0;
 
     /******************************************************
           VGA信号产生电路
