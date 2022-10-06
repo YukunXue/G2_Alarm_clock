@@ -5,13 +5,15 @@ module alarm_clock_top(
     input clk200MHz_n, 
     input rst_n, load_SW, fastfwd_SW, alarm_off_SW, set_BTN,
     input moveRight_BTN, moveLeft_BTN, increment_BTN, decrement_BTN,
-    output outsignal_counter, outsignal_time,
+//   output outsignal_counter, outsignal_time,
 
 //    output audioOut, aud_sd,
     /*
         G2 use led to replace the aud
     */
     output  alarm_led,
+    output  work_led,
+    output  second_led,
 
     output  hsync,
     output  vsync,
@@ -23,13 +25,20 @@ module alarm_clock_top(
     );
 
     wire clk_100MHz;
+    wire locked;
 
-clock_pll PLL(
-
-
+clk_wiz_0 PLL(
+    .clk_out1(clk_100MHz),
+  // Status and control signals
+    .resetn(rst_n),
+    .locked(locked),
+    .clk_in1_p(clk200MHz_p),
+    .clk_in1_n(clk200MHz_n)
 );
 
 
+    wire outsignal_counter;
+    wire outsignal_time;
     //  Signal  Define
     
     wire [3:0] seconds_ones, minutes_ones, load_minutes_ones;
@@ -94,6 +103,16 @@ clock_pll PLL(
         .key_out(set_BTN_t)
     );
 
+    always @ (posedge clk_100MHz)begin
+        if(!rst_n)  begin
+            work_led    <=  1'b0;
+        end
+        else  if(set_BTN_t)begin
+                work_led    <=  1'b1;
+            end
+            else
+                work_led    <=  1'b0;
+    end
 
     /******************************************************
            时钟产生电路
@@ -111,6 +130,7 @@ clock_pll PLL(
     /******************************************************
             计数电路
     ********************************************************/
+    wire min;
  
     //  计数模块
     counter_60 second_counter(
@@ -206,7 +226,7 @@ clock_pll PLL(
     ********************************************************/
 
    set_signal_detect    U0_set_signal_detect(
-        .clk(clk),
+        .clk(clk_100MHz),
         .rst_n(rst_n),
         .other_btn(test_signal),
         .second_clk(outsignal_counter),
@@ -218,6 +238,7 @@ clock_pll PLL(
     /******************************************************
           指示灯部分
     ********************************************************/
+    wire play_sound;
     
     check_alarm check_alarm_module(minutes_ones, load_minutes_ones, minutes_tens, load_minutes_tens, load_SW, alarm_off_SW, play_sound);
 
@@ -229,7 +250,7 @@ clock_pll PLL(
 
 
     vga_sync     u_vga_sync (
-        .clk                     ( clk             ),
+        .clk                     ( clk_100MHz      ),
         .rst_n                   ( rst_n           ),
 
         .hsync                   ( hsync           ),
@@ -242,7 +263,7 @@ clock_pll PLL(
 
 
     rgb_out     u_rgb_out  (
-        .clk(clk),
+        .clk(clk_100MHz),
         .rst_n(rst_n),
         .minutes_tens(out_minutes_tens),
         .minutes_ones(out_minutes_ones),

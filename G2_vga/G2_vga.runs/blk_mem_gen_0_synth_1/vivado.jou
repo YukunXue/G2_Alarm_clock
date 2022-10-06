@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Oct  6 14:26:42 2022
+# Process ID: 16056
+# Current directory: E:/genesys2_test/G2_vga/G2_vga.runs/blk_mem_gen_0_synth_1
+# Command line: vivado.exe -log blk_mem_gen_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source blk_mem_gen_0.tcl
+# Log file: E:/genesys2_test/G2_vga/G2_vga.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.vds
+# Journal file: E:/genesys2_test/G2_vga/G2_vga.runs/blk_mem_gen_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source blk_mem_gen_0.tcl -notrace

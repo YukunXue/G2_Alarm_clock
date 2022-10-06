@@ -23,15 +23,15 @@
 // 解决：在左边界区和右边界区，应该无效的是video信号，而不是同步信号 同步信号在折回区无效
 // 所以显示的顺序应该是 HD HB HR HF VD DB VR VF
 module vga_sync #(
-    parameter   HD = 640,   //水平显示区域 
-                HB = 16,    //水平扫描右边界
-                HR = 96,    //水平折回区 
-                HF = 48,    //水平扫描左边界
+    parameter   HD = 1024,   //水平显示区域 
+                HB = 24,    //水平扫描右边界
+                HR = 136,    //水平折回区 
+                HF = 160,    //水平扫描左边界
 //-----------------------------分割水平与扫描----------------
-                VD = 480,   //垂直显示区域
-                VB = 33,    //垂直扫描底部边界
-                VR = 2,      //垂直折回区                
-                VF = 10   //垂直扫描顶部边界
+                VD = 600,   //垂直显示区域
+                VB = 23,    //垂直扫描底部边界
+                VR = 4,      //垂直折回区                
+                VF = 1   //垂直扫描顶部边界
 
 )(
         input wire clk,rst_n,
@@ -63,7 +63,7 @@ module vga_sync #(
 
     wire p_tick_w;  // same as p_tick
     //--------------------p_tick clk generate --------------  100 Mhz  M = 4 N = 2------------------
-    counter_mod_m #(.M(4), .N(2)) counter_mod_p_tick(
+    counter_mod_m #(.M(2), .N(1)) counter_mod_p_tick(
         .clk(clk),
         .rst_n(rst_n),
         .m_out(p_tick_w)

@@ -43,10 +43,10 @@ module rgb_out(
 
 
     	// 显示器可显示区域
-	parameter UP_BOUND = 31;
-	parameter DOWN_BOUND = 510;
-	parameter LEFT_BOUND = 144;
-	parameter RIGHT_BOUND = 783;
+	parameter UP_BOUND = 19;
+	parameter DOWN_BOUND = 618;
+	parameter LEFT_BOUND = 296;
+	parameter RIGHT_BOUND = 1319;
 
 	// 屏幕中央两个字符的显示区域
 	parameter up_pos = 267;
