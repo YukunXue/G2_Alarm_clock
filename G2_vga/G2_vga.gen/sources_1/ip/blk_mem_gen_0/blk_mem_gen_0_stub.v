@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-// Date        : Thu Oct  6 14:27:39 2022
+// Date        : Thu Oct  6 20:59:17 2022
 // Host        : DESKTOP-3PN6QK7 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               e:/genesys2_test/G2_vga/G2_vga.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.v

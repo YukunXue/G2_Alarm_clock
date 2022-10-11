@@ -15,27 +15,37 @@ module alarm_clock_top(
     output  work_led,
     output  second_led,
 
-    output  hsync,
-    output  vsync,
-    output  [3:0]   VGA_R,
-    output  [3:0]   VGA_G,
-    output  [3:0]   VGA_B   
+    output  vga_hs,
+    output  vga_vs,
+    output  [4:0]   vga_r,
+    output  [5:0]   vga_g,
+    output  [4:0]   vga_b   
 
 //    output  [7:0]   test_leds
     );
 
+    wire clk200MHz;
     wire clk_100MHz;
-    wire locked;
+    
 
-clk_wiz_0 PLL(
-    .clk_out1(clk_100MHz),
-  // Status and control signals
-    .resetn(rst_n),
-    .locked(locked),
-    .clk_in1_p(clk200MHz_p),
-    .clk_in1_n(clk200MHz_n)
-);
+  	IBUFGDS #(
+		.DIFF_TERM    ("FALSE"),
+		.IBUF_LOW_PWR ("TRUE"),
+		.IOSTANDARD   ("LVDS")
+	) get_clk (
+		.O  (clk200MHz),
+		.I  (clk200MHz_p),
+		.IB (clk200MHz_n)
+	);
 
+    counter_mod_m #(
+        .M(2),
+        .N(1)
+    ) U_100MHz(
+        .clk(clk200MHz),
+        .rst_n(rst_n),
+        .m_out(clk_100MHz)
+    );
 
     wire outsignal_counter;
     wire outsignal_time;
@@ -59,8 +69,8 @@ clk_wiz_0 PLL(
     wire    [3:0]   set_id;
 
     wire    vga_clk;
-    wire    [9:0]   pixel_x;
-    wire    [9:0]   pixel_y; 
+    wire    [10:0]   pixel_x;
+    wire    [10:0]   pixel_y; 
     wire            video_on;
 
 
@@ -107,7 +117,7 @@ clk_wiz_0 PLL(
         if(!rst_n)  begin
             work_led    <=  1'b0;
         end
-        else  if(set_BTN_t)begin
+        else  if(set_BTN_t|decrement_BTN_t|increment_BTN_t|moveLeft_BTN_t|moveRight_BTN_t)begin
                 work_led    <=  1'b1;
             end
             else

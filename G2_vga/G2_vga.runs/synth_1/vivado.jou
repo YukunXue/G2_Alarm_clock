@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Thu Oct  6 19:29:51 2022
-# Process ID: 29676
+# Start of session at: Tue Oct 11 22:42:30 2022
+# Process ID: 38624
 # Current directory: E:/genesys2_test/G2_vga/G2_vga.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: E:/genesys2_test/G2_vga/G2_vga.runs/synth_1/top.vds

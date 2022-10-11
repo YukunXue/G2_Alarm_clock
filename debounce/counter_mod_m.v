@@ -19,4 +19,5 @@ module counter_mod_m # (
     end
 
     assign m_out = (regN == (M-1))?1'b1:1'b0;
+
 endmodule

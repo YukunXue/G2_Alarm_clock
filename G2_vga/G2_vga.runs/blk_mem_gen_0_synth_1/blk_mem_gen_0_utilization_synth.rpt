@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Thu Oct  6 14:27:39 2022
+| Date         : Thu Oct  6 20:59:17 2022
 | Host         : DESKTOP-3PN6QK7 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file blk_mem_gen_0_utilization_synth.rpt -pb blk_mem_gen_0_utilization_synth.pb
 | Design       : blk_mem_gen_0
@@ -33,8 +33,8 @@ Table of Contents
 | Slice LUTs*             |   13 |     0 |    203800 | <0.01 |
 |   LUT as Logic          |   13 |     0 |    203800 | <0.01 |
 |   LUT as Memory         |    0 |     0 |     64000 |  0.00 |
-| Slice Registers         |    4 |     0 |    407600 | <0.01 |
-|   Register as Flip Flop |    4 |     0 |    407600 | <0.01 |
+| Slice Registers         |    2 |     0 |    407600 | <0.01 |
+|   Register as Flip Flop |    2 |     0 |    407600 | <0.01 |
 |   Register as Latch     |    0 |     0 |    407600 |  0.00 |
 | F7 Muxes                |    0 |     0 |    101900 |  0.00 |
 | F8 Muxes                |    0 |     0 |     50950 |  0.00 |
@@ -57,7 +57,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 4     |          Yes |       Reset |            - |
+| 2     |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -156,7 +156,7 @@ Table of Contents
 | LUT6     |    9 |                 LUT |
 | RAMB36E1 |    7 |        Block Memory |
 | LUT2     |    4 |                 LUT |
-| FDRE     |    4 |        Flop & Latch |
+| FDRE     |    2 |        Flop & Latch |
 | RAMB18E1 |    1 |        Block Memory |
 +----------+------+---------------------+
 
