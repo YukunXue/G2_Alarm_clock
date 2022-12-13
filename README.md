@@ -16,3 +16,4 @@ G2_VGA增加字符串显示功能
 用这个：
 ​:hand:   https://www.zhetao.com/fontarray.html
 
+bmp2mif.rar:放一个很好用的bmp转raw图像的工具，很适合做图像处理
